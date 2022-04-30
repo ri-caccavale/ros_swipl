@@ -16,4 +16,3 @@ Run the test node using the following command:
 ```
 rosrun ros_swipl swipl_test
 ```
-# ros_swipl
