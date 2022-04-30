@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   roslib
   rospy
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -48,9 +49,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 # Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-# )
+add_service_files(
+  FILES
+  query.srv
+  consult.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -59,11 +62,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   Action2.action
 # )
 
-# Generate added messages and services with any dependencies listed here
-# generate_messages(
-#  DEPENDENCIES
-#  std_msgs  # Or other packages containing msgs
-# )
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -115,20 +118,28 @@ link_directories(${SWIPL_LIBRARY_DIRS})
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-  #${SWIPL_INCLUDE_DIRS}
+  ${SWIPL_INCLUDE_DIRS}
 )
 
+## test node
 add_executable(swipl_test
-    src/main.cpp
+    src/swipl_test.cpp
     src/SWIPL.cpp
     )
-
-## Specify libraries to link a library or executable target against
 target_link_libraries(swipl_test 
    ${catkin_LIBRARIES}
    ${SWIPL_LIBRARIES}
 )
 
+## ros node
+add_executable(ros_swipl
+    src/ros_swipl.cpp
+    src/SWIPL.cpp
+    )
+target_link_libraries(ros_swipl 
+   ${catkin_LIBRARIES}
+   ${SWIPL_LIBRARIES}
+)
 
 #############
 ## Install ##

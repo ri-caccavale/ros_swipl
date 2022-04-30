@@ -8,9 +8,8 @@
 #include "SWIPL.h"
 
 SWIPL::SWIPL(){
-    
-    swi_engine = new PlEngine("default");
-    
+    char s[] = "default";
+    swi_engine = new PlEngine(s);
 }
 
 SWIPL::SWIPL(int &argc, char **argv){

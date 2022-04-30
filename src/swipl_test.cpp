@@ -8,7 +8,7 @@
 
 int main(int argc, char** argv) {
     
-    ros::init(argc, argv, "ros_swipl");
+    ros::init(argc, argv, "swipl_test");
 
     std::string package_path = ros::package::getPath("ros_swipl");
 
