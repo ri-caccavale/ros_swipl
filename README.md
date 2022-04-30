@@ -34,5 +34,5 @@ rosservice call /ros_swipl/query '{query: "arg(1,foo(arg1),X)"}'
 ```
 The variable X will be unified with arg1.
 
-## Notes:
+## Notes
 The ctrl+c signal to shutdown the node is not working
