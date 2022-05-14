@@ -5,6 +5,8 @@
 #include "ros/package.h"
 #include "SWIPL.h"
 
+#include <signal.h>
+
 //services:
 #include "ros_swipl/query.h"
 #include "ros_swipl/consult.h"
@@ -53,10 +55,10 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "ros_swipl");
 
     ros_swipl_node *node = new ros_swipl_node(argc, argv);
+    
+    std::cout<<"ROS_SWIPL started"<<std::endl;
 
     ros::spin();
-
-    std::cout<<"ROS_SWIPL killed"<<std::endl;
 
     delete node;
         

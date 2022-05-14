@@ -8,14 +8,22 @@
 #include "SWIPL.h"
 
 SWIPL::SWIPL(){
-    char s[] = "default";
-    swi_engine = new PlEngine(s);
+
+    int argc;
+    char *argv[] = {(char*)"default"};
+
+    if ( !PL_initialise(argc, argv) )
+        PL_halt(1);
+    
+    swi_engine = new PlEngine(argv[0]);
 }
 
 SWIPL::SWIPL(int &argc, char **argv){
+
+    if ( !PL_initialise(argc, argv) )
+        PL_halt(1);
     
     swi_engine = new PlEngine(argv[0]);
-    
 }
 
 SWIPL::~SWIPL(){
